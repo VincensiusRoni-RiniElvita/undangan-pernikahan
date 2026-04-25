@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Vincensius & Rini</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wedding: {
+                            primary: '#f4f1ea',
+                            secondary: '#8d6e63',
+                            accent: '#d4af37',
+                            dark: '#4e342e',
+                            footer: '#795548'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="scroll-hidden">
+
+    <!-- Music Control -->
+    <div id="music-control">
+        <button onclick="toggleMusic()">
+            <i id="music-icon" class="fas fa-music"></i>
+        </button>
+       
+        <div id="youtube-player" style="position: absolute; visibility: hidden; width: 1px; height: 1px; pointer-events: none;"></div>
+        <!-- Local/Fallback Audio -->
+        <audio id="bg-music" loop>
+            <source src="bnn.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-between text-center px-4 py-20 transition-all duration-1000 splash-bg text-white">
+        <div data-aos="fade-down">
+            <p class="font-serif text-sm tracking-[0.5em] mb-4 opacity-90 uppercase">The Wedding Of</p>
+            <h1 class="font-cursive text-6xl md:text-8xl mb-2">Vincensius & Rini</h1>
+        </div>
+
+        <div class="flex flex-col items-center gap-6" data-aos="fade-up">
+            <div class="mb-4">
+                <p class="font-serif text-sm mb-2 opacity-90">Kepada Yth<br>Bapak/Ibu/Saudara/i</p>
+                <h2 id="guest-name" class="text-3xl font-bold tracking-wide">Arbi & Partner</h2>
+            </div>
+            
+            <button onclick="openInvitation()" class="btn-outline-white group">
+                <i class="fas fa-envelope text-xl"></i>
+                <span>Buka Undangan</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-bg relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden py-20">
+            <!-- Flower Decorations -->
+            <img src="" class="flower-corner top-left" alt="">
+            <img src="" class="flower-corner bottom-right" alt="">
+            
+            <div class="z-20 px-4 max-w-3xl" data-aos="fade-up">
+                <!-- Top Ornament -->
+                <div class="mb-6 opacity-80">
+                    <img src="" class="w-48 mx-auto" alt="">
+                </div>
+
+                <p class="font-serif italic mb-6 text-wedding-dark leading-relaxed">Dengan ini kami mengundang Bapak/Ibu/Saudara/i<br>Untuk hadir pada pernikahan dan resepsi:</p>
+                
+                <h1 class="font-cursive text-6xl md:text-8xl text-wedding-secondary mb-2">Vincensius Roni</h1>
+                <p class="font-serif text-lg mb-6 text-wedding-dark">Putra Dari Bapak Taslim P dan Ibu Agustina</p>
+                
+                <div class="deco-line my-6">
+                    <span class="font-cursive text-4xl">dan</span>
+                </div>
+                
+                <h1 class="font-cursive text-6xl md:text-8xl text-wedding-secondary mb-2">Rini Elvita</h1>
+                <p class="font-serif text-lg mb-8 text-wedding-dark">Putri Dari Bapak Martinus Sabelau dan Ibu Hermi Narita Samongilailai</p>
+                
+                <!-- Bottom Ornament -->
+                <div class="mb-10 opacity-80">
+                    <img src="" class="w-48 mx-auto transform rotate-180" alt="">
+                </div>
+
+                <button onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth'})" class="btn-brown">
+                    Buka Undangan <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+
+            <!-- Curve Shape Divider -->
+            <div class="curve-divider">
+                <svg data-name="Layer 1" xmlns="ron.jpeg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section id="intro" class="py-24 px-4 text-center intro-bg relative">
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="deco-line mb-6">
+                    <i class="fas fa-leaf text-wedding-secondary"></i>
+                    <h2 class="font-serif text-2xl md:text-3xl mx-4">Assalamu'alaikum Wr. Wb.</h2>
+                    <i class="fas fa-leaf text-wedding-secondary transform scale-x-[-1]"></i>
+                </div>
+                <p class="font-serif text-lg leading-relaxed italic text-wedding-dark">
+                    Dengan penuh rasa syukur dan bahagia, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam hari istimewa kami.
+                </p>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="py-20 px-4 bg-wedding-primary">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-stretch justify-center gap-8 relative">
+                <!-- Groom Box -->
+                <div class="profile-box flex-1 text-center" data-aos="fade-right">
+                    <div class="relative w-48 h-48 mx-auto mb-6">
+                        <!-- Decorative Frame -->
+                        <div class="absolute inset-0 border-2 border-wedding-accent/30 rounded-full animate-pulse"></div>
+                        <div class="absolute inset-2 border border-wedding-accent rounded-full"></div>
+                        <!-- Image -->
+                        <div class="absolute inset-3 rounded-full overflow-hidden shadow-inner">
+                            <img src="ro.jpeg" alt="Groom" class="w-full h-full object-cover object-[center_top_15%]">
+                        </div>
+                    </div>
+                    <h3 class="font-cursive text-4xl text-wedding-secondary mb-4">Vincensius Roni</h3>
+                    <p class="font-serif text-sm uppercase tracking-widest text-wedding-accent mb-1">Putra Dari</p>
+                    <p class="font-serif text-lg text-wedding-dark">Bapak Taslim P<br>dan Ibu Agustina</p>
+                </div>
+
+                <!-- Center Heart -->
+                <div class="flex items-center justify-center z-10 -my-4 md:my-0">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-wedding-accent">
+                        <i class="fas fa-heart text-wedding-secondary"></i>
+                    </div>
+                </div>
+
+                <!-- Bride Box -->
+                <div class="profile-box flex-1 text-center" data-aos="fade-left">
+                    <div class="relative w-48 h-48 mx-auto mb-6">
+                        <!-- Decorative Frame -->
+                        <div class="absolute inset-0 border-2 border-wedding-accent/30 rounded-full animate-pulse"></div>
+                        <div class="absolute inset-2 border border-wedding-accent rounded-full"></div>
+                        <!-- Image -->
+                        <div class="absolute inset-3 rounded-full overflow-hidden shadow-inner">
+                            <img src="rin.jpeg" alt="Bride" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <h3 class="font-cursive text-4xl text-wedding-secondary mb-4">Rini Elvita</h3>
+                    <p class="font-serif text-sm uppercase tracking-widest text-wedding-accent mb-1">Putra Dari</p>
+                    <p class="font-serif text-lg text-wedding-dark">Bapak Martinus Sabelau<br>dan Ibu Hermi Narita Samongilailai</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="py-24 px-4 text-center bg-white">
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="deco-line mb-4">
+                    <i class="fas fa-leaf text-wedding-secondary"></i>
+                    <h2 class="font-cursive text-4xl mx-4">Hari Bahagia Kami</h2>
+                    <i class="fas fa-leaf text-wedding-secondary transform scale-x-[-1]"></i>
+                </div>
+                <p class="font-serif text-xl mb-12 text-wedding-dark">Minggu, 17 Mei 2026</p>
+                
+                <div id="countdown" class="flex flex-wrap justify-center gap-6">
+                    <div class="countdown-box">
+                        <span id="days" class="text-4xl font-bold text-wedding-secondary block">00</span>
+                        <span class="text-xs uppercase tracking-widest text-gray-500">Hari</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="hours" class="text-4xl font-bold text-wedding-secondary block">00</span>
+                        <span class="text-xs uppercase tracking-widest text-gray-500">Jam</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="minutes" class="text-4xl font-bold text-wedding-secondary block">00</span>
+                        <span class="text-xs uppercase tracking-widest text-gray-500">Menit</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="seconds" class="text-4xl font-bold text-wedding-secondary block">00</span>
+                        <span class="text-xs uppercase tracking-widest text-gray-500">Detik</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Section -->
+        <section class="py-24 px-4 bg-wedding-primary">
+            <div class="max-w-5xl mx-auto">
+                <div class="deco-line mb-12">
+                    <i class="fas fa-leaf text-wedding-secondary"></i>
+                    <h2 class="font-cursive text-5xl mx-4">Akad & Resepsi</h2>
+                    <i class="fas fa-leaf text-wedding-secondary transform scale-x-[-1]"></i>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-10" data-aos="fade-right">
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 bg-wedding-secondary text-white rounded-full flex items-center justify-center shadow-lg">
+                                <i class="fas fa-calendar-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-wedding-dark">Minggu, 17 Mei 2026</h4>
+                                <p class="text-gray-600">Pukul 10.00 WITA - Selesai</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-6">
+                            <div class="w-14 h-14 bg-wedding-secondary text-white rounded-full flex items-center justify-center shadow-lg">
+                                <i class="fas fa-map-marker-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-wedding-dark">Gereja Stasi St. Agustinus</h4>
+                                <p class="text-gray-600">Desa Sagulubeg, Dusun Pusaregat</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://maps.app.goo.gl/esmhAA7BoAHqtSdE8?g_st=awb" target="_blank" class="btn-brown inline-flex items-center">
+                            <i class="fas fa-location-arrow mr-2"></i> Lihat di Google Maps
+                        </a>
+                    </div>
+                    
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white" data-aos="fade-left">
+                        <img src="unnamed.jpg" alt="Location" class="w-full h-full object-cover aspect-video">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="py-24 px-4 bg-wedding-primary relative">
+            <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 relative" data-aos="zoom-in">
+                    <div class="relative z-10">
+                        <img src="ron.jpeg" class="rounded-full w-full aspect-square object-cover border-8 border-white shadow-2xl" alt="Couple">
+                    </div>
+                    <!-- Wedding Ring Ornament -->
+                    <div class="absolute bottom-0 right-0 z-20 w-32 translate-x-1/4 translate-y-1/4">
+                       
+                    </div>
+                </div>
+                <div class="md:w-1/2 text-left" data-aos="fade-up">
+                    <p class="font-serif text-2xl md:text-3xl italic leading-relaxed mb-8 text-wedding-dark">
+                        "Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia."
+                    </p>
+                    <p class="font-bold text-lg text-wedding-secondary mb-4">( Matius 19:6 )</p>
+                    <i class="fas fa-heart text-wedding-secondary text-2xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="py-24 px-4 text-center bg-wedding-primary">
+            <div class="max-w-3xl mx-auto" data-aos="fade-up">
+                <div class="deco-line mb-8">
+                    <i class="fas fa-leaf text-wedding-secondary"></i>
+                    <h2 class="font-cursive text-5xl mx-4">Konfirmasi Kehadiran</h2>
+                    <i class="fas fa-leaf text-wedding-secondary transform scale-x-[-1]"></i>
+                </div>
+                <p class="font-serif text-lg mb-10 text-wedding-dark">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
+                </p>
+                <a href="https://wa.me/6281212346732?text=Halo%20Vincensius%20%26%20Rini%2C%20saya%20ingin%20mengonfirmasi%20kehadiran%20saya%20di%20acara%20pernikahan%20kalian." class="btn-brown inline-flex items-center text-lg">
+                    <i class="fab fa-whatsapp mr-2 text-2xl"></i> Konfirmasi via WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-16 bg-wedding-footer text-white text-center">
+            <div class="max-w-3xl mx-auto px-4">
+                <p class="font-serif text-lg mb-8 italic opacity-90">Terima kasih atas doa dan kehadiran Bapak/Ibu/Saudara/i</p>
+                <div class="w-16 h-[1px] bg-wedding-accent mx-auto mb-8 opacity-50"></div>
+                <i class="fas fa-heart text-wedding-accent text-2xl mb-6"></i>
+                <h3 class="font-cursive text-4xl mb-2">Vincensius & Rini</h3>
+                <p class="font-serif tracking-widest opacity-70">17 MEI 2026</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+</html>
